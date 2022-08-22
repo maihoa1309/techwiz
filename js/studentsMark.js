@@ -1,6 +1,9 @@
 const app = angular.module('myApp', [
     //list of modules                    
 ])   
+function doSomething() {
+    console.log('Hello')
+}
 async function getResult(studentId) {
     try {
         //get detail student        
