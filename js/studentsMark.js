@@ -3,6 +3,7 @@ const app = angular.module('myApp', [
 ])   
 function doSomething() {
     console.log('Hello')
+    //add more for testing
 }
 async function getResult(studentId) {
     try {
