@@ -1,0 +1,18 @@
+{
+    "classes":[{
+        "subjectId": 1,
+        "class": "Class 1",
+        "time": "12/09/2022"
+    },
+    {
+        "subjectId": 2,
+        "class": "Class 9",
+        "time": "12/07/2022"
+    },
+    {
+        "subjectId": 3,
+        "class": "Class 4",
+        "time": "20/07/2022"
+    }
+]
+}

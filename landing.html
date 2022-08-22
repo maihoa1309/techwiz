@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.rtl.min.css" integrity="sha384-+4j30LffJ4tgIMrq9CwHvn0NjEvmuDCOfk6Rpg2xg7zgOxWWtLtozDEEVvBPgHqE" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/homepage.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,100' rel='stylesheet' type='text/css'>
+
+    <script type="text/javascript" src="/js/thietkewebphp.net.snow.js"></script>
+    <script src="/js/gettime.js"></script>
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="./js/constants.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="./js/studentsMark.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+</head>
+<body style="width: 99%;">
+    <b style="top: 0; left: 0;"><i class="fas fa-user"></i><SCRIPT>
+        s = sessionStorage.getItem('id');
+        s++;
+        sessionStorage.setItem('id', s);
+        document.write(s)</SCRIPT></b>
+<center>
+    <div ng-controller="MarksController" ng-app="myApp" >
+        <div class="col">
+            <div class="">
+                <img class="a" src="./images/logo.png">
+                <h2 class="test">You should learn from your competitor, but never copy. Copy and you die.</h2>
+            </div>
+            <div class="">
+                <h3>Learn<br>Learn more<br>Learn forever</h3>
+                <img class="b" src="./images/learn.png" alt=""width="50%">
+                <marquee width="50%" behavior="alternate" > 
+                    <h1>Welcome to eStudiez Portal</h1>
+                </marquee><br><br>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">
+                    <h2>
+                        <strong>Enter your name:</strong>
+                    </h2>
+                </label>
+                <input type="text" class="form-control" name="name"  style="width: 50%;" ng-model="name">
+            </div>
+        </div>
+        <!-- hidden -->
+        
+            <div id="accordion">
+                <div class="row justify-content-md-center">
+                    <div class="card col-md-2" style="border: none;">
+                        <div id="headingOne">
+                            <button class="btn btn-primary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <a class="user text-dark" href="#teacher" ng-click="click()">You are teacher ?</a>
+                            </button>
+                        </div>  
+                    </div>
+                    <div class="card col-md-2" style="border: none;">
+                        <div  id="headingTwo">
+                                <button class="btn btn-primary collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <a class="user  text-dark" href="#student" ng-click="click()">You are student ?</a>
+                                </button>
+                        </div>
+                    </div>
+                    <div class="card col-md-2" style="border: none;">
+                        <div id="headingThree">
+                            <button class="btn btn-primary collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <a class="user text-dark" href="#parrent"ng-click="click()">You are parent ? </a>          
+                            </button>
+                        </div>
+                    </div>
+                </div>
+         <div data-bs-spy="scroll">
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <center>
+                    <div class="row justify-content-md-center">
+                        <div style="text-align: end;" ><b>Hello {{name}}</b></div>
+                        <div class="col-md-12"><H1><b>Teacher Page</b></H1></div>
+                        <div class="col-sm-12 col-md-6 offset-md-1">
+                            <H1 class="">STUDENT MARKS</H1>
+                            <table class="table table-hover table-info">
+                            <!-- <caption>List of Mark</caption> -->
+                                <thead>
+                                <tr>
+                                    <th class="table-primary" scope="col" style="width:70%;">SUBJECT TITLE</th>
+                                    <th class="table-secondary td" scope="col">Score factor 1</th>
+                                    <th class="table-warning td" scope="col">Score factor 2</th>
+                                    <th class="table-danger td " scope="col">Semester grades</th>
+                                    <th class="table-warning td" scope="col">AVERAGE</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                            <tr ng-repeat="detailResult in detailResults">
+                                                <td class="table-primary"><input class="ok" style="text-align: left;" type="text" size="14%" value="{{detailResult.subjectName}}" disabled> </td>						
+                                                <td class="table-secondary td"><input class="ok" type="text" value="{{detailResult.mark1}}" size="10%"></td>
+                                                <td class="table-warning td"><input class="ok" type="text" value="{{detailResult.mark2}}" size="10%"></td>
+                                                <td class="table-danger td"><input class="ok" type="text" value="{{detailResult.mark3}}" size="10%"></td>
+                                                <td class="table-warning td"><input class="ok" type="text" value="{{detailResult.average.toFixed(3)}}" size="10%" disabled></td>
+                                            </tr>
+                                        </tbody>
+                            </table>
+                        </div>
+                        <div class="col-sm-6 col-md-3" style="margin-left: 5%;">
+                            <canvas id="myChart1"></canvas>
+                            <H1 class="">STUDENT PORGRESS</H1>
+                        </div>	
+
+                
+                </center>
+                    <form action="" class="container" >
+                        <H1 class="title">STUDY RESOURCES</H1>
+                        <div class="row" > 
+                            <div class="col" style="margin-top: 10px;"> 
+                                <a href="https://www.amazon.com/Java-Programming-Beginning-Beginners-Guide-ebook/dp/B01A8RP70M" class="carreaux_presentation_light" target="_blank">
+                                    <div class="shadow_swhow_mini" style="background-image:url(./images/java.jpg); background-size: cover; background-repeat: no-repeat;">  
+                                        <div class="deroul_titre">Java programming</div>
+                                    <div class="deroul_soustitre" >https://www.amazon.com/Java-Programming-Beginning-Beginners-Guide-ebook/dp/B01A8RP70M</div>
+                                    </div>
+                                </a>    
+                            </div>
+                            <div class="col" style="margin-top: 10px;"> 
+                                <a href="https://www.amazon.com/HTML-CSS-Design-Build-Websites/dp/1118008189" class="carreaux_presentation_light" target="_blank">
+                                    <div class="shadow_swhow_mini" style="background-image:url(./images/htmlcss.jpg); background-size: cover; background-repeat: no-repeat;">
+                                        
+                                        <div class="deroul_titre">HTML CSS Book</div>
+                                        <div class="deroul_soustitre">https://www.amazon.com/HTML-CSS-Design-Build-Websites/dp/1118008189</div>
+                                    </div> 
+                                </a>    
+                            </div>
+                
+                
+                            <div class="col" style="margin-top: 10px;"> 
+                                <a href="https://www.amazon.com/Programming-Language-Covering-Microsoft-Development/dp/0321741765" class="carreaux_presentation_light" target="_blank">
+                                    <div class="shadow_swhow_mini" style="background-image:url(./images/C.jpg); background-size: cover; background-repeat: no-repeat; border: 1px solid black;">
+                                        
+                                        <div class="deroul_titre">C# programming</div>
+                                        <div class="deroul_soustitre">https://www.amazon.com/Programming-Language-Covering-Microsoft-Development/dp/0321741765</div>
+                                    </div> 
+                                </a>    
+                            </div>
+                    </form>
+                        <div>
+                            <H1>Student Classes</H1>
+                            <table class="table table-hover table-info" style="width: 90%;">
+                                <!-- <caption>List of Mark</caption> -->
+                                    <thead>
+                                    <tr>
+                                        <th class="table-warning" scope="col" style="width:50%;">Subject</th>
+                                        <th class="table-secondary td" scope="col">Class</th>
+                                        <th class="table-warning td" scope="col">Date</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="class in classes">
+                                            <td class="table-warning">{{class.subjectName}}</td>
+                                            <td class="table-secondary td">{{class.class}}</td>
+                                            <td class="table-warning td">{{class.time}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                </div>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <center>
+                        <div class="row justify-content-md-center">
+                            <div style="text-align: end;"><b>Hello {{name}}</b></div>
+                            <div class="col-md-12"><H1><b>Student Page</b></H1></div>
+                            <div class="col-sm-12 col-md-6">
+                                <H1 class="">YOUR MARKS</H1>
+                                <table class="table table-hover table-info" style="width: 90%;">
+                                <!-- <caption>List of Mark</caption> -->
+                                    <thead>
+                                    <tr>
+                                        <th class="table-primary" scope="col" style="width:50%;">SUBJECT TITLE</th>
+                                        <th class="table-secondary td" scope="col">Score factor 1</th>
+                                        <th class="table-warning td" scope="col">Score factor 2</th>
+                                        <th class="table-danger td " scope="col">Semester grades</th>
+                                        <th class="table-warning td" scope="col">AVERAGE</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="detailResult in detailResults">
+                                            <td class="table-primary">{{detailResult.subjectName}}</td>
+                                            <td class="table-secondary td">{{detailResult.mark1}}</td>
+                                            <td class="table-warning td">{{detailResult.mark2}}</td>
+                                            <td class="table-danger td">{{detailResult.mark3}}</td>
+                                            <td class="table-warning td">{{detailResult.average.toFixed(3)}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-sm-12 col-md-3 offset-md-1">
+                                <canvas id="myChart2"></canvas>
+                                <H1 class="">YOUR PORGRESS</H1>
+                            </div>	
+                        </div>
+                            </center>
+                        </div>
+                        <form action="" class="container" >
+                            <H1 class="title">STUDY RESOURCES</H1>
+                            <div class="row" > 
+                                <div class="col" style="margin-top: 10px;"> 
+                                    <a href="https://www.amazon.com/Java-Programming-Beginning-Beginners-Guide-ebook/dp/B01A8RP70M" class="carreaux_presentation_light" target="_blank">
+                                        <div class="shadow_swhow_mini" style="background-image:url(./images/java.jpg); background-size: cover; background-repeat: no-repeat;">  
+                                            <div class="deroul_titre">Java programming</div>
+                                        <div class="deroul_soustitre" >https://www.amazon.com/Java-Programming-Beginning-Beginners-Guide-ebook/dp/B01A8RP70M</div>
+                                        </div>
+                                    </a>    
+                                </div>
+                                <div class="col" style="margin-top: 10px;"> 
+                                    <a href="https://www.amazon.com/HTML-CSS-Design-Build-Websites/dp/1118008189" class="carreaux_presentation_light" target="_blank">
+                                        <div class="shadow_swhow_mini" style="background-image:url(./images/htmlcss.jpg); background-size: cover; background-repeat: no-repeat;">
+                                            
+                                            <div class="deroul_titre">HTML CSS Book</div>
+                                            <div class="deroul_soustitre">https://www.amazon.com/HTML-CSS-Design-Build-Websites/dp/1118008189</div>
+                                        </div> 
+                                    </a>    
+                                </div>
+                    
+                    
+                                <div class="col" style="margin-top: 10px;"> 
+                                    <a href="https://www.amazon.com/Programming-Language-Covering-Microsoft-Development/dp/0321741765" class="carreaux_presentation_light" target="_blank">
+                                        <div class="shadow_swhow_mini" style="background-image:url(./images/C.jpg); background-size: cover; background-repeat: no-repeat; border: 1px solid black;">
+                                            
+                                            <div class="deroul_titre">C# programming</div>
+                                            <div class="deroul_soustitre">https://www.amazon.com/Programming-Language-Covering-Microsoft-Development/dp/0321741765</div>
+                                        </div> 
+                                    </a>    
+                                </div>
+                        </form>
+                    <div>
+                        <div>
+                            <H1>Student Classes</H1>
+                            <table class="table table-hover table-info" style="width: 90%;">
+                                <!-- <caption>List of Mark</caption> -->
+                                    <thead>
+                                    <tr>
+                                        <th class="table-warning" scope="col" style="width:50%;">Subject</th>
+                                        <th class="table-secondary td" scope="col">Class</th>
+                                        <th class="table-warning td" scope="col">Date</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="class in classes">
+                                            <td class="table-warning">{{class.subjectName}}</td>
+                                            <td class="table-secondary td">{{class.class}}</td>
+                                            <td class="table-warning td">{{class.time}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                    </div>
+                        
+            </div>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+                    <center>
+                        <div class="row justify-content-md-center">
+                            <div style="text-align: end;"><b>Hello {{name}}</b></div>
+                            <div class="col-md-12"><H1><b>Parent Page</b></H1></div>
+                            <div class="col-sm-12 col-md-6">
+                                <H1 class="">VIEW MARKS</H1>
+                                <table class="table table-hover table-info" style="width: 90%;">
+                                <!-- <caption>List of Mark</caption> -->
+                                    <thead>
+                                    <tr>
+                                        <th class="table-primary" scope="col" style="width:50%;">SUBJECT TITLE</th>
+                                        <th class="table-secondary td" scope="col">Score factor 1</th>
+                                        <th class="table-warning td" scope="col">Score factor 2</th>
+                                        <th class="table-danger td " scope="col">Semester grades</th>
+                                        <th class="table-warning td" scope="col">AVERAGE</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="detailResult in detailResults">
+                                            <td class="table-primary">{{detailResult.subjectName}}</td>
+                                            <td class="table-secondary td">{{detailResult.mark1}}</td>
+                                            <td class="table-warning td">{{detailResult.mark2}}</td>
+                                            <td class="table-danger td">{{detailResult.mark3}}</td>
+                                            <td class="table-warning td">{{detailResult.average.toFixed(3)}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-sm-12 col-md-3 offset-md-1">
+                                <canvas id="myChart3"></canvas>
+                                <H1 class="">VIEW PORGRESS</H1>
+                            </div>	
+                        </div>
+                    </center>
+                </div>
+            </div>
+        </div>
+        
+    <br>
+    <footer class="module content" style="background-color: rgb(20, 24, 20);">
+        <div class="row">
+            <div class="col-md-3 offset-md-1">  
+                <a href="#"><img src="./images/logo2.png" style="width: 100%; margin-top: 50%;"></a>
+            </div>
+            <div class="col-md-3 offset-md-1 col-xs-6" style="color: white;">
+                <br><br><h2 style="color: rgb(233, 239, 243);">Contacts</h2>
+            <br>  
+                <a href="tel:0382020858" style="color: white;"><i class="bi bi-telephone-inbound-fill"></i>  Hotline:0382020858</a>
+                <br>
+                <a href="mailto:info@aptech.vn" style="color: white;"> <i class="bi bi-envelope-fill"></i> info@aptech.vn</a>
+                <br>
+                <a href="https://www.google.com/maps/place/285+%C4%90%E1%BB%99i+C%E1%BA%A5n,+V%C4%A9nh+Ph%C3%BA,+Ba+%C4%90%C3%ACnh,+H%C3%A0+N%E1%BB%99i+100000,+Vietnam/@21.0356416,105.8190246,21z/data=!4m18!1m12!4m11!1m3!2m2!1d105.8190313!2d21.035711!1m6!1m2!1s0x3135ab145bf89bd7:0xd94a869b494c04b6!2zMjg1IMSQ4buZaSBD4bqlbiwgTGnhu4V1IEdpYWksIEJhIMSQw6xuaCwgSGFub2k!2m2!1d105.8190292!2d21.0357106!3m4!1s0x3135ab145bf89bd7:0xd94a869b494c04b6!8m2!3d21.0357106!4d105.8190292" style="color: white;" target="blank"> <i class="bi bi-geo-alt-fill"></i> Add:285 Đội Cấn, Ba Đình, HN</a>
+                <br><br><br>
+                <div style="font-size: 20px; color: aqua;">
+                <a href=""><i class="bi bi-github"></i></a> &nbsp;
+                <a href=""><i class="bi bi-facebook"></i></a>&nbsp;
+                <a href=""><i class="bi bi-messenger"></i></a>&nbsp;
+                <a href=""><i class="bi bi-tiktok"></i></a>&nbsp;
+                <a href=""><i class="bi bi-youtube"></i></a>&nbsp;
+                </div>
+          </div>
+          <div class="col-md-3 offset-md-1">
+           <br> 
+           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d232.74538306114312!2d105.81902462831401!3d21.035641566813283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab145bf89bd7%3A0xd94a869b494c04b6!2zMjg1IMSQ4buZaSBD4bqlbiwgVsSpbmggUGjDuiwgQmEgxJDDrG5oLCBIw6AgTuG7mWkgMTAwMDAwLCBWaWV0bmFt!5e0!3m2!1sen!2s!4v1660120248371!5m2!1sen!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>   
+        </div>
+        <br>
+        <div>
+            <center style="color: aquamarine;">Welcome to eStudiez<br>
+                © Copyright 2022</center>
+        </div>
+        <div class="clock fixed-bottom ms-5 px-2 d-none d-md-block" style="right:auto; bottom: 0.75rem; opacity: 1.0; color: brown;">
+            <div id="Date" class="text-align-left fw-bold"></div>
+            <ul class="ultime px-0 my-0">
+              <li class="geo d-inline-block fw-bold"></li>
+              <li class="idtime d-inline-block fw-bold" id="hours"></li>
+              <li class="idtime d-inline-block fw-bold" id="point">:</li>
+              <li class="idtime d-inline-block fw-bold" id="min"></li>
+              <li class="idtime d-inline-block fw-bold" id="point">:</li>
+              <li class="idtime d-inline-block fw-bold" id="sec"></li>
+            </ul>
+            <div class="toggle-btn-clock" style="display:none;">
+              <b><i class="bi bi-clock" style="font-size: 10rem; transform: rotate(360deg); -webkit-text-stroke-width: 1.7px;"></i></b>
+            </div>
+          </div>
+          <script>
+            //clock and location button
+            
+            //clock function
+            $(document).ready(function () {
+        
+              // Create two variable with the names of the months and days in an array
+              var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+              var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+        
+              // Create a newDate() object
+              var newDate = new Date();
+              // Extract the current date from Date object
+              newDate.setDate(newDate.getDate());
+              // Output the day, date, month and year   
+              $('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
+        
+              setInterval(function () {
+                // Create a newDate() object and extract the seconds of the current time on the visitor's
+                var seconds = new Date().getSeconds();
+                // Add a leading zero to seconds value
+                $("#sec").html((seconds < 10 ? "0" : "") + seconds);
+              }, 1000);
+        
+              setInterval(function () {
+                // Create a newDate() object and extract the minutes of the current time on the visitor's
+                var minutes = new Date().getMinutes();
+                // Add a leading zero to the minutes value
+                $("#min").html((minutes < 10 ? "0" : "") + minutes);
+              }, 1000);
+        
+              setInterval(function () {
+                // Create a newDate() object and extract the hours of the current time on the visitor's
+                var hours = new Date().getHours();
+                // Add a leading zero to the hours value
+                $("#hours").html((hours < 10 ? "0" : "") + hours);
+              }, 1000);
+            });
+        
+            //map footer
+            $('.mapopen').on('click', () => {
+              $(".maptoggle").toggle();
+            })
+          </script>
+          <script>
+            // kéo xuống khoảng cách 500px thì xuất hiện nút Top-up
+            var offset = 500;
+            // thời gian di trượt 0.75s ( 1000 = 1s )
+            var duration = 750;
+            $(function(){
+            $(window).scroll(function () {
+            if ($(this).scrollTop() > offset)
+            $('#top-up').fadeIn(duration);else
+            $('#top-up').fadeOut(duration);
+            });
+            $('#top-up').click(function () {
+            $('body,html').animate({scrollTop: 0}, duration);
+            });
+            });
+            </script>
+            <div title="Về đầu trang" id="top-up">
+            <i class="fas fa-arrow-circle-up"></i></div>
+    </footer>
+</center>
+</body>
+</html>

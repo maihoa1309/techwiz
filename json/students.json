@@ -1,0 +1,17 @@
+{
+    "students" : [
+        {
+            "studentId": 1,
+            "studentName": "Nguyen Van ZX"
+        },
+        {
+            "studentId": 2,
+            "studentName": "Nguyen Van B"              
+        },
+        {
+            "studentId": 3,
+            "studentName": "Nguyen Van C"
+        }
+    ]       
+}
+

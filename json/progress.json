@@ -1,0 +1,31 @@
+{
+    "progress": [
+        {
+            "studentId": 1,
+            "subjectId": 2,
+            "exam": "lastExam",
+            "time": "10/08/2020",
+            "status": "Pass",
+            "mark": "90"
+        },
+        {
+            "studentId" : 2,
+            "subjectId": 2,
+            "exam": "Mock",
+            "time": "02/11/2010",
+            "status": "Prepare",
+            "mark": ""
+        },
+        {
+            "studentId" : 2,
+            "subjectId": 2,
+            "exam": "Mock",
+            "time": "19/09/2011",
+            "status": "Fail",
+            "mark": ""
+        }
+    ]
+    
+}
+
+

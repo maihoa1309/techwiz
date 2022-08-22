@@ -1,0 +1,25 @@
+{
+    "subjects": [
+        {
+            "subjectId": 1,
+            "subjectName": "Java programming"
+        },
+        {
+            "subjectId": 2,
+            "subjectName": "HTML CSS"
+        },
+        {
+            "subjectId": 3,
+            "subjectName": "Angular JS"
+        },
+        {
+            "subjectId": 4,
+            "subjectName": "C programming"
+        },
+        {
+            "subjectId": 5,
+            "subjectName": "Python"
+        }
+    ]
+        
+}

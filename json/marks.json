@@ -1,0 +1,75 @@
+{
+    "marks" : [
+        {
+            "studentId": 1,
+            "subjectId": 1,
+            "mark1": 50,
+            "mark2": 65,
+            "mark3": 90
+        },
+        {
+            "studentId": 1,
+            "subjectId": 2,
+            "mark1": 59,
+            "mark2": 60,
+            "mark3": 90
+        },
+        {
+            "studentId": 1,
+            "subjectId": 3,
+            "mark1": 59,
+            "mark2": 90,
+            "mark3": 67
+        },
+        {
+            "studentId": 1,
+            "subjectId": 4,
+            "mark1": 60,
+            "mark2": 20,
+            "mark3": 80
+        },
+        {
+            "studentId": 1,
+            "subjectId": 5,
+            "mark1": 50,
+            "mark2": 70,
+            "mark3": 89
+        },
+        {
+            "studentId": 2,
+            "subjectId": 1,
+            "mark1": 7,
+            "mark2": 6.5,
+            "mark3": 9
+        },
+        {
+            "studentId": 2,
+            "subjectId": 2,
+            "mark1": 5.9,
+            "mark2": 6,
+            "mark3": 8.5
+        },
+        {
+            "studentId": 2,
+            "subjectId": 3,
+            "mark1": 5.9,
+            "mark2": 7.6,
+            "mark3": 10
+        },
+        {
+            "studentId": 2,
+            "subjectId": 4,
+            "mark1": 9.3,
+            "mark2": 5,
+            "mark3": 9.5
+        },
+        {
+            "studentId": 2,
+            "subjectId": 5,
+            "mark1": 4.7,
+            "mark2": 7,
+            "mark3": 8.9
+        }
+
+    ]        
+}
